@@ -4,14 +4,14 @@ import path from 'path';
 export default {
   devtool: 'inline-source-map',
   entry: [
-    path.resolve(__dirname, 'src/index')
+    path.resolve(__dirname, '../src/index')
   ],
   target: 'web',
   output: {
-    //path: path.resolve(__dirname, 'src'),
-	//publicPath: '/',
-	path: '/',
-    publicPath: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, '../src'),
+	publicPath: '/',
+	// path: '/',
+    // publicPath: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
   },
   plugins: [
@@ -27,4 +27,4 @@ export default {
       {test: /\.css$/, loaders: ['style-loader','css-loader']}
     ]
   }
-}
+};
