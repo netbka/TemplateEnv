@@ -6,7 +6,7 @@
 		"start": "npm-run-all --parallel security-check open:devServer",
 		"open:devServer":"babel-node buildScripts/devServer.js",
 		"security-check": "nsp check",
-		
+		"prebuild": "rimraf ./dist && mkdir dist",
 		"build":"babel-node buildScripts/build.js",
 		"postbuild":"babel-node buildScripts/distServer.js"
 		
