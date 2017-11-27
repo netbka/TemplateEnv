@@ -1,18 +1,16 @@
-import webpack from 'webpack';
 import path from 'path';
+import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
- 
+
 export default {
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
   entry: [
     path.resolve(__dirname, '../src/index')
   ],
   target: 'web',
   output: {
-    path: path.resolve(__dirname, '../src'),
+    path: path.resolve(__dirname, '../dist'),
 	publicPath: '/',
-	// path: '/',
-    // publicPath: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
   },
   plugins: [
@@ -20,11 +18,16 @@ export default {
         debug: true,
         noInfo: false,
 	  }),
+	  //Create HTML file and include reference to bundled JS
 	  new HtmlWebpackPlugin({
-		template: 'src/index.html',
-		inject:true
-	}),
-	  new webpack.HotModuleReplacementPlugin(),
+		  template: './src/index.html',
+		  inject:true
+	  }),
+	  //remove duplications
+	  new webpack.optimize.DedupePlugin(),
+	  //new webpack.HotModuleReplacementPlugin(),
+	  //Minify JS
+	  new webpack.optimize.UglifyJsPlugin()
   ],
   module: {
     rules: [

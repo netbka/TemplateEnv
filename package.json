@@ -3,9 +3,13 @@
     "version": "1.0.0",
     "description": "JavaScript development environment",
     "scripts": { 
-		"start": "npm-run-all --parallel security-check open:src",
-		"open:src":"babel-node buildScripts/SrcServer.js",
-		"security-check": "nsp check"
+		"start": "npm-run-all --parallel security-check open:devServer",
+		"open:devServer":"babel-node buildScripts/devServer.js",
+		"security-check": "nsp check",
+		
+		"build":"babel-node buildScripts/build.js",
+		"postbuild":"babel-node buildScripts/distServer.js"
+		
 	    },
     "author": "Cory House",
     "license": "MIT",
