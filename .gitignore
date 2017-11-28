@@ -9,7 +9,7 @@
 bld/
 [Bb]in/
 [Oo]bj/
-Dist/
+
 
 # Visual Studio 2015 cache/options directory
 .vs/
@@ -64,14 +64,6 @@ _Chutzpah*
 # TeamCity is a build add-in
 _TeamCity*
 
-
-# TODO: Un-comment the next line if you do not want to checkin
-# your web deploy settings because they may include unencrypted
-# passwords
-#*.pubxml
-*.publishproj
-
-
 # Others
 ClientBin/
 [Ss]tyle[Cc]op.*
@@ -82,4 +74,4 @@ ClientBin/
 *.pfx
 *.publishsettings
 node_modules/
-orleans.codegen.cs
+

@@ -58,6 +58,7 @@ export default {
   ],
   module: {
     rules: [
+		{test: /\.vue$/,loader: 'vue-loader',options: {hotReload: false }},
       {test: /\.js$/, exclude: /node_modules/, loaders: ['babel-loader']},
       //{test: /\.css$/, loaders: ['style-loader','css-loader']}
 	  {test: /\.css$/, use: ExtractTextPlugin.extract({fallback: "style-loader",use: "css-loader"})},
