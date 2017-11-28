@@ -1,8 +1,9 @@
 import Vue from 'vue';
+import AppLayout from './Layout/Layout.vue';
+
+
 const app = new Vue({
-data: {
-    hello: "Hello from View hot replace"
-}
+render: h=> h(AppLayout)
 });
 export {app};
 
