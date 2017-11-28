@@ -36,7 +36,7 @@ export default {
 		{test: /\.vue$/,loader: 'vue-loader',options: {hotReload: true }},
       {test: /\.js$/, exclude: /node_modules/, loaders: ['babel-loader']},
 	  {test: /\.css$/, loaders: ['style-loader','css-loader']},
-	  { enforce: "pre", test:/(\.js$)/, loader:"eslint-loader", exclude: /node_modules/}
+	  { enforce: "pre", test:/(\.js$)|(\.vue$)/, loader:"eslint-loader", exclude: /node_modules/}
     ]
   }
 };

@@ -14,7 +14,7 @@
   "author": "Cory House",
   "license": "MIT",
   "dependencies": {
-    "vue": "^2.5.8",
+    "vue": "2.5.9",
     "whatwg-fetch": "2.0.3"
   },
   "devDependencies": {

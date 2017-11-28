@@ -62,7 +62,7 @@ export default {
       {test: /\.js$/, exclude: /node_modules/, loaders: ['babel-loader']},
       //{test: /\.css$/, loaders: ['style-loader','css-loader']}
 	  {test: /\.css$/, use: ExtractTextPlugin.extract({fallback: "style-loader",use: "css-loader"})},
-	  { enforce: "pre", test:/(\.js$)/, loader:"eslint-loader", exclude: /node_modules/}
+	  { enforce: "pre", test:/(\.js$)|(\.vue$)/, loader:"eslint-loader", exclude: /node_modules/}
     ]
   }
 };
