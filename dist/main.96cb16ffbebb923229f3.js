@@ -1,1 +1,0 @@
-webpackJsonp([0],{7:function(e,t,n){"use strict";n(8),n(9).app.$mount("#app")},8:function(e,t){},9:function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.app=void 0;var o=n(0),u=function(e){return e&&e.__esModule?e:{default:e}}(o),a=new u.default({data:{hello:"Hello from View"}});t.app=a}},[7]);

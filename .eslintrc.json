@@ -2,7 +2,7 @@
 	"root": true,
 	"extends": [
 	  "eslint:recommended",
-	  "plugin:import/errors",
+	  
 	  "plugin:import/warnings"
 	],
 	"parserOptions": {
@@ -14,8 +14,12 @@
 	  "node": true,
 	  "mocha": true
 	},
+	
 	"rules": {
-  "no-console":"off",
-  "no-mixed-spaces-and-tabs":"off"
-	}
+  		"no-console":"off",
+  		"no-mixed-spaces-and-tabs":"off"
+	},
+	"plugins": [
+		"html"
+	]
   }

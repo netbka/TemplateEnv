@@ -10,6 +10,11 @@ export default {
     vendor: path.resolve(__dirname, '../src/vendor'), 
     main: path.resolve(__dirname, '../src/index')
   },
+//   resolve: {
+// 	alias: {
+// 	  vue: 'vue/dist/vue.js'
+// 	}
+//   },
   target: 'web',
   output: {
     path: path.resolve(__dirname, '../dist'),
@@ -55,7 +60,8 @@ export default {
     rules: [
       {test: /\.js$/, exclude: /node_modules/, loaders: ['babel-loader']},
       //{test: /\.css$/, loaders: ['style-loader','css-loader']}
-      {test: /\.css$/, use: ExtractTextPlugin.extract({fallback: "style-loader",use: "css-loader"})}
+	  {test: /\.css$/, use: ExtractTextPlugin.extract({fallback: "style-loader",use: "css-loader"})},
+	  { enforce: "pre", test:/(\.js$)/, loader:"eslint-loader", exclude: /node_modules/}
     ]
   }
 };

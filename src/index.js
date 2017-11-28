@@ -1,4 +1,6 @@
-import './index.css'
-import {app} from "./app";
+console.log("o1k");
+import './index.css';
+import { app } from "./app";
 
 app.$mount("#app");
+

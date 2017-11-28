@@ -7,6 +7,11 @@ export default {
   entry: [
     path.resolve(__dirname, '../src/index')
   ],
+//   resolve: {
+// 	alias: {
+// 	  vue: 'vue/dist/vue.js'
+// 	}
+//   },
   target: 'web',
   output: {
     path: path.resolve(__dirname, '../src'),
@@ -29,7 +34,8 @@ export default {
   module: {
     rules: [
       {test: /\.js$/, exclude: /node_modules/, loaders: ['babel-loader']},
-      {test: /\.css$/, loaders: ['style-loader','css-loader']}
+	  {test: /\.css$/, loaders: ['style-loader','css-loader']},
+	  { enforce: "pre", test:/(\.js$)/, loader:"eslint-loader", exclude: /node_modules/}
     ]
   }
 };
