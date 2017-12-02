@@ -18,7 +18,7 @@ module.exports = merge(common, {
 	hot:true,
   },
   plugins: [
-	  //Hash file using MD5 so their names change when content changes
+	  //Hash file using MD5 so their names change when content changes.
 	new WebpackMd5Hash(),
 	new HtmlWebpackPlugin({
 		template: './src/index.html',
