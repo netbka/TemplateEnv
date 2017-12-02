@@ -4,7 +4,9 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
 import common from './webpack.common.js';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import webpack from 'webpack';
 module.exports = merge(common, {
+	devtool: 'source-map',
 	output: {
 		path: path.resolve(__dirname, './dist'),
 		publicPath: '/',
@@ -15,6 +17,7 @@ module.exports = merge(common, {
 	new UglifyJSPlugin(
 		{
 			mangle: true,
+			sourceMap: true,
 			comments: false,
 			compress: {warnings: false}
 		  }
@@ -34,5 +37,8 @@ module.exports = merge(common, {
 	  }),
 	  //Generate an external css file with a hash
 	 new ExtractTextPlugin('[name].[contenthash].css'),
+	 new webpack.DefinePlugin({
+		       'process.env.NODE_ENV': JSON.stringify('production')
+		     })
   ]
 });
