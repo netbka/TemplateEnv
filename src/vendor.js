@@ -5,5 +5,6 @@ any files not referenced here will be bundled into main.js for the prod build
 */
 /* eslint-disable no-unused-vars*/ 
 
-import fetch from 'whatwg-fetch';
-import Vue from 'vue';
+//cimport Vue from 'vue';
+import UIkit from 'uikit';
+import './assets/css/style.scss';

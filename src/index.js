@@ -1,6 +1,9 @@
-console.log("o1k");
-import './index.css';
+console.log("o88fff1k");
+
 import { app } from "./app";
 
 app.$mount("#app");
 
+if (module.hot){
+	module.hot.accept();
+}

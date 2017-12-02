@@ -4,24 +4,41 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import WebpackMd5Hash from 'webpack-md5-hash';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
+
 export default {
   devtool: 'source-map',
   entry: {
-    vendor: path.resolve(__dirname, '../src/vendor'), 
-    main: path.resolve(__dirname, '../src/index')
+    vendor: [
+      path.resolve(__dirname, '../src/vendor')], 
+	main: path.resolve(__dirname, '../src/index'),
+	
   },
-//   resolve: {
-// 	alias: {
-// 	  vue: 'vue/dist/vue.js'
-// 	}
-//   },
   target: 'web',
   output: {
     path: path.resolve(__dirname, '../dist'),
 	  publicPath: '/',
     filename: '[name].[chunkhash].js'
   },
+
+//   resolve: {
+//     alias: {
+//       'video.js$': 'video.js/dist/video.js',
+//       'videojs-contrib-hls': 'videojs-contrib-hls/dist/videojs-contrib-hls',
+//     },
+//   },
+//   resolve: {
+// 	alias: {
+// 	  webworkify: 'webworkify-webpack-dropin',
+// 	  'videojs-contrib-hls': 'videojs-contrib-hls/dist/videojs-contrib-hls.min.js'
+// 	}
+//   },
+	
   plugins: [
+	new webpack.ProvidePlugin(
+		{ $: 'jquery', jQuery: 'jquery',
+	}), 
+	// new webpack.ProvidePlugin({ $: 'jquery', jQuery: 'jquery' }), 
+	new webpack.NamedModulesPlugin(),
     new webpack.LoaderOptionsPlugin({
         debug: true,
         noInfo: false,
@@ -39,7 +56,8 @@ export default {
     
     //Create HTML file and include reference to bundled JS
 	  new HtmlWebpackPlugin({
-      template: './src/index.html',
+		filename: 'index.html',
+		template: './src/index.html',
       minify:{
         removeComments: true,
         collapseWhitespace: true,
@@ -50,18 +68,37 @@ export default {
       inject:true,
       hash: true
 	  }),
+	  new HtmlWebpackPlugin({
+		filename: 'presentation.html',
+		template: 'src/presentation.html',
+		inject:true
+	  }),
 	  //remove duplications
 	  new webpack.optimize.DedupePlugin(),
 	  //new webpack.HotModuleReplacementPlugin(),
 	  //Minify JS
-	  new webpack.optimize.UglifyJsPlugin()
+	  new webpack.optimize.UglifyJsPlugin({
+		mangle: true,
+		comments: false,
+		compress: {warnings: false}
+	  }),
+	  
+	//    new webpack.DefinePlugin({}),
   ],
   module: {
     rules: [
-		{test: /\.vue$/,loader: 'vue-loader',options: {hotReload: false }},
-      {test: /\.js$/, exclude: /node_modules/, loaders: ['babel-loader']},
+      {test: /\.vue$/,loader: 'vue-loader',
+      options: {
+        hotReload: false,
+        css: 'css-loader' ,
+        scss: 'css-loader|sass-loader'
+      }},
+	{test: /\.js$/, exclude: /node_modules/, loaders: ['babel-loader']},
+	{ test: /\.(jpg|jpeg|gif|png|woff|woff2|eot|ttf|svg|ico)$/, loader: 'url-loader?limit=50000' },
       //{test: /\.css$/, loaders: ['style-loader','css-loader']}
-	  {test: /\.css$/, use: ExtractTextPlugin.extract({fallback: "style-loader",use: "css-loader"})},
+    {test: /\.css$/, use: ExtractTextPlugin.extract({fallback: "style-loader",use: "css-loader"})},
+	{test: /\.scss$/, loaders: ['style-loader','css-loader','sass-loader']},
+	
 	  { enforce: "pre", test:/(\.js$)|(\.vue$)/, loader:"eslint-loader", exclude: /node_modules/}
     ]
   }
